@@ -10,6 +10,8 @@ let timer;
 let lastHole = 0;
 let points = 0;
 let difficulty = "hard";
+let previousHole = "";
+let duration = 0;
 
 /**
  * Generates a random integer within a range.
@@ -62,12 +64,13 @@ function setDelay(difficulty) {
  * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
 function chooseHole(holes) {
+  console.log(holes)
   // TODO: Write your code here.
-  const holes = document.querySelectorAll('.hole');
-  if hole === lastHole then call chooseHole(holes) again;
-  if hole is not the same as the lastHole then keep track of 
-  it (lastHole = hole) and return the hole;
-  chooseHole(holes);
+  // const holes = document.querySelectorAll('.hole');
+  // if hole === lastHole then call chooseHole(holes) again;
+  // if hole is not the same as the lastHole then keep track of 
+  // it (lastHole = hole) and return the hole;
+  // chooseHole(holes);
 
 }
 
@@ -113,8 +116,8 @@ function gameOver() {
 *
 */
 function showUp() {
-  let delay = 0; // TODO: Update so that it uses setDelay()
-  const hole = 0;  // TODO: Update so that it use chooseHole()
+  let delay = setDelay(difficulty); // TODO: Update so that it uses setDelay()
+  const hole = chooseHole(holes);  // TODO: Update so that it use chooseHole()
   return showAndHide(hole, delay);
 }
 
@@ -174,8 +177,8 @@ function updateScore() {
 */
 function clearScore() {
   // TODO: Write your code here
-  // points = 0;
-  // score.textContent = points;
+  points = 0;
+  score.textContent = points;
   return points;
 }
 
