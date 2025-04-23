@@ -82,5 +82,8 @@ h2 {
 }
 
 button {
-  border-radius: 35%
+  border-radius: 35%;
+  display: flex;
+  justify-content: center;
+  margin-left: 1025px;
 }

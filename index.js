@@ -41,10 +41,16 @@ function randomInteger(min, max) {
  */
 function setDelay(difficulty) {
   // TODO: Write your code here.
-  setDelay("easy");
-  setDelay("normal");
-  setDelay("hard");
-  
+  if (difficulty){
+    setDelay("easy");
+    return 1500;
+  }else if{
+     setDelay("normal");
+      return 1000; 
+      }else{
+        setDelay("hard");
+        return randomInteger(600, 1200);
+  }
 }
 
 /**
@@ -64,10 +70,14 @@ function setDelay(difficulty) {
 function chooseHole(holes) {
   // TODO: Write your code here.
   const holes = document.querySelectorAll('.hole');
-  if hole === lastHole then call chooseHole(holes) again;
-  if hole is not the same as the lastHole then keep track of 
-  it (lastHole = hole) and return the hole;
-  chooseHole(holes);
+  let (lastHole = hole);
+  if (hole === hole){
+    chooseHole(holes);
+  }else{
+    (hole !== hole);
+    return hole;
+  }
+  
 
 }
 
