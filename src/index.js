@@ -42,11 +42,17 @@ function randomInteger(min, max) {
  *
  */
 function setDelay(difficulty) {
-  // TODO: Write your code here.
-  setDelay("easy");
-  setDelay("normal");
-  setDelay("hard");
-  
+  console.log("MISFIT" , difficulty);
+  if (difficulty === 'easy'){
+    // setDelay("easy");
+    return 1500;
+  } else if (difficulty === 'normal'){
+    //  setDelay("normal");
+      return 1000; 
+  } else {
+    // setDelay("hard");
+    return randomInteger(600, 1200);
+  }
 }
 
 /**
@@ -71,8 +77,14 @@ function chooseHole(holes) {
   // if hole is not the same as the lastHole then keep track of 
   // it (lastHole = hole) and return the hole;
   // chooseHole(holes);
-
-}
+    const index = randomInteger(0, 2);
+    const hole = holes[index];
+    if (hole === lastHole) {
+      return chooseHole(holes);
+    }
+    lastHole = hole;
+    return hole;
+  }
 
 /**
 *
@@ -277,6 +289,7 @@ function startGame(){
   //setEventListeners();
   //startTimer();
   //showUp();
+  setDelay('easy');
   return "game started";
 }
 

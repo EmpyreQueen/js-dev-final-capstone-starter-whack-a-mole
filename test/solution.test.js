@@ -97,6 +97,7 @@ describe("US-02: setDelay()", () => {
     const delay = await page.evaluate(() => {
       return window.setDelay("easy");
     });
+    console.log("DELAY",delay);
     expect(delay).toEqual(1500);
   });
 
