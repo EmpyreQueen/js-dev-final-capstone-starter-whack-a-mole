@@ -42,7 +42,7 @@ function randomInteger(min, max) {
  *
  */
 function setDelay(difficulty) {
-  //console.log("MISFIT" , difficulty);
+  console.log("MISFIT" , difficulty);
   if (difficulty === 'easy'){
     // setDelay("easy");
     return 1500;
@@ -70,7 +70,7 @@ function setDelay(difficulty) {
  * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
 function chooseHole(holes) {
-  //console.log(holes)
+  console.log(holes);
   // TODO: Write your code here.
   // const holes = document.querySelectorAll('.hole');
   // if hole === lastHole then call chooseHole(holes) again;
@@ -143,7 +143,7 @@ function showUp() {
 */
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
- // console.log("DELAY", delay) 
+ console.log("DELAY", delay) ;
   toggleVisibility(hole)                            
   const timeoutID = setTimeout(() => {
     // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
@@ -185,10 +185,11 @@ function updateScore() {
 // let points = 0; increment by 1point 
 
 // console.log("SCORE", score) 
-score.textContent = points;
- let points = 0;
+
+  let points = 0;
   points++;
-  console.log("POINTS", points)
+  console.log("POINTS", points);
+  score.textContent = points;
   return points;
 }
 
@@ -299,13 +300,13 @@ function stopGame(){
  * Note: Simply uncommenting `setDuration(10);` and `showUp();` is not enough. To make the game work, ensure all necessary functions listed above are called to initialize the score, timer, event listeners, and mole appearances. 
 */
 function startGame(){
-  //clearScore();
-  //stopGame();   //optional
-  //setDuration(10);
-  //setEventListeners();
-  //startTimer();
-  //showUp();
-  setDelay('easy');
+  // clearScore();
+  // stopGame();   //optional
+  // setDuration(10);
+  // setEventListeners();
+  // startTimer();
+  // showUp();
+  // setDelay();
   return "game started";
 }
 
