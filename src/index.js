@@ -42,7 +42,7 @@ function randomInteger(min, max) {
  *
  */
 function setDelay(difficulty) {
-  console.log("MISFIT" , difficulty);
+  //console.log("MISFIT" , difficulty);
   if (difficulty === 'easy'){
     // setDelay("easy");
     return 1500;
@@ -70,7 +70,7 @@ function setDelay(difficulty) {
  * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
 function chooseHole(holes) {
-  console.log(holes)
+  //console.log(holes)
   // TODO: Write your code here.
   // const holes = document.querySelectorAll('.hole');
   // if hole === lastHole then call chooseHole(holes) again;
@@ -143,12 +143,13 @@ function showUp() {
 */
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
-  
+ // console.log("DELAY", delay) 
+  toggleVisibility(hole)                            
   const timeoutID = setTimeout(() => {
     // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-    
-    gameOver();
-  }, 0); // TODO: change the setTimeout delay to the one provided as a parameter
+     toggleVisibility(hole); 
+  //  gameOver();
+  }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
   return timeoutID;
 }
 
@@ -160,7 +161,12 @@ function showAndHide(hole, delay){
 */
 function toggleVisibility(hole){
   // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
-  
+  // if hole has the 'show' class then remove it, else add it
+  if (hole.classList.contains('show')) {
+    hole.classList.remove('show');
+  } else {
+    hole.classList.add('show');
+  }
   return hole;
 }
 
@@ -176,9 +182,16 @@ function toggleVisibility(hole){
 */
 function updateScore() {
   // TODO: Write your code here
+// let points = 0; increment by 1point 
 
+// console.log("SCORE", score) 
+score.textContent = points;
+ let points = 0;
+  points++;
+  console.log("POINTS", points)
   return points;
 }
+
 
 /**
 *
@@ -202,7 +215,10 @@ function clearScore() {
 function updateTimer() {
   // TODO: Write your code here.
   // hint: this code is provided to you in the instructions.
-  
+  if (time > 0){
+    time -= 1;
+    timerDisplay.textContent = time;
+  }
   return time;
 }
 
@@ -214,7 +230,7 @@ function updateTimer() {
 */
 function startTimer() {
   // TODO: Write your code here
-  // timer = setInterval(updateTimer, 1000);
+  timer = setInterval(updateTimer, 1000);
   return timer;
 }
 
