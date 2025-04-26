@@ -2,8 +2,8 @@ const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
 // TODO: Add the missing query selectors:
-const score= document.querySelector('.score'); // Use querySelector() to get the score element
-const timerDisplay= document.querySelector('.timer'); // use querySelector() to get the timer element.
+const score= document.querySelector('#score'); // Use querySelector() to get the score element
+const timerDisplay= document.querySelector('#timer'); // use querySelector() to get the timer element.
 
 let time = 0;
 let timer;
@@ -144,11 +144,18 @@ function showUp() {
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
  console.log("DELAY", delay) ;
-  toggleVisibility(hole)                            
+  
+  if (time > 0) {
+    toggleVisibility(hole);
+  }                           
   const timeoutID = setTimeout(() => {
     // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-     toggleVisibility(hole); 
-  //  gameOver();
+   
+  // if something do something, then call gameover
+  if (time < 0) {
+    toggleVisibility(hole);;    
+  }  
+   gameOver();
   }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
   return timeoutID;
 }
@@ -185,10 +192,10 @@ function updateScore() {
 // let points = 0; increment by 1point 
 
 // console.log("SCORE", score) 
-
-  let points = 0;
-  points++;
+  // let points = 0;
+  points = points+1;
   console.log("POINTS", points);
+  console.log("SCORE", score);
   score.textContent = points;
   return points;
 }
@@ -203,7 +210,7 @@ function updateScore() {
 */
 function clearScore() {
   // TODO: Write your code here
-  points = 0;
+  let points = 0;
   score.textContent = points;
   return points;
 }
@@ -218,6 +225,7 @@ function updateTimer() {
   // hint: this code is provided to you in the instructions.
   if (time > 0){
     time -= 1;
+    console.log("TIMERDISPLAY", timerDisplay)
     timerDisplay.textContent = time;
   }
   return time;
@@ -244,8 +252,12 @@ function startTimer() {
 *
 */
 function whack(event) {
+  // console.log("WHACK")
   // TODO: Write your code here.
   // call updateScore()
+  // 
+  updateScore();
+  // moles.addEventListener('click', whack);
   return points;
 }
 
@@ -255,9 +267,15 @@ function whack(event) {
 * for an example on how to set event listeners using a for loop.
 */
 function setEventListeners(){
+  console.log("setEventListeners");
   // TODO: Write your code here
-
-  return moles;
+ // forEach mole add the whack event handler when a player clicks on the mole.
+    // return moles; 
+  // for (let i = 0; i < moles.length; i++) {
+  //   moles[i].addEventListener('click', whack);    
+  // }
+  moles.forEach(mole => mole.addEventListener('click', whack));
+    return moles;
 }
 
 /**
@@ -297,16 +315,19 @@ function stopGame(){
  * 5. Begins the game loop by calling `showUp()` to display moles. 
 
 
- * Note: Simply uncommenting `setDuration(10);` and `showUp();` is not enough. To make the game work, ensure all necessary functions listed above are called to initialize the score, timer, event listeners, and mole appearances. 
+ * Note: Simply uncommenting `setDuration(10);` and `showUp();` is not enough. 
+To make the game work, ensure all necessary functions listed above are called to
+ initialize the score, timer, event listeners, and mole appearances. 
 */
 function startGame(){
-  // clearScore();
+  setDuration(10);
+  clearScore();
   // stopGame();   //optional
-  // setDuration(10);
-  // setEventListeners();
-  // startTimer();
-  // showUp();
-  // setDelay();
+  startTimer();
+  showUp();
+  setEventListeners();
+ 
+  
   return "game started";
 }
 
