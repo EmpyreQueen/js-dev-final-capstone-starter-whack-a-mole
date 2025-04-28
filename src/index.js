@@ -42,7 +42,7 @@ function randomInteger(min, max) {
  *
  */
 function setDelay(difficulty) {
-  console.log("MISFIT" , difficulty);
+  console.log("SETDELAY" , difficulty);
   if (difficulty === 'easy'){
     // setDelay("easy");
     return 1500;
@@ -70,14 +70,14 @@ function setDelay(difficulty) {
  * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
 function chooseHole(holes) {
-  console.log(holes);
+  console.log("CHOOSEHOLES", holes);
   // TODO: Write your code here.
   // const holes = document.querySelectorAll('.hole');
   // if hole === lastHole then call chooseHole(holes) again;
   // if hole is not the same as the lastHole then keep track of 
   // it (lastHole = hole) and return the hole;
   // chooseHole(holes);
-    const index = randomInteger(0, 2);
+    const index = randomInteger(0, 8);
     const hole = holes[index];
     if (hole === lastHole) {
       return chooseHole(holes);
@@ -128,8 +128,9 @@ function gameOver() {
 *
 */
 function showUp() {
+  console.log("SHOWUP");
   let delay = setDelay(difficulty); // TODO: Update so that it uses setDelay()
-  const hole = chooseHole(holes);  // TODO: Update so that it use chooseHole()
+  let hole = chooseHole(holes);  // TODO: Update so that it use chooseHole()
   return showAndHide(hole, delay);
 }
 
@@ -144,7 +145,7 @@ function showUp() {
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
  console.log("DELAY", delay) ;
-  
+  console.log("HOLE", hole);
   if (time > 0) {
     toggleVisibility(hole);
   }                           
@@ -188,12 +189,14 @@ function toggleVisibility(hole){
 *
 */
 function updateScore() {
+  console.log("UPDATESCORE")
   // TODO: Write your code here
 // let points = 0; increment by 1point 
 
 // console.log("SCORE", score) 
   // let points = 0;
-  points = points+1;
+  // points = points+1;
+  points+=1;
   console.log("POINTS", points);
   console.log("SCORE", score);
   score.textContent = points;
@@ -209,8 +212,9 @@ function updateScore() {
 *
 */
 function clearScore() {
+  console.log("CLEARSCORE")
   // TODO: Write your code here
-  let points = 0;
+  points = 0;
   score.textContent = points;
   return points;
 }
@@ -221,11 +225,12 @@ function clearScore() {
 *
 */
 function updateTimer() {
+  console.log("UPDATETIMER")
   // TODO: Write your code here.
   // hint: this code is provided to you in the instructions.
   if (time > 0){
     time -= 1;
-    console.log("TIMERDISPLAY", timerDisplay)
+    // console.log("TIMERDISPLAY", timerDisplay)
     timerDisplay.textContent = time;
   }
   return time;
@@ -238,6 +243,7 @@ function updateTimer() {
 *
 */
 function startTimer() {
+  console.log("STARTTIMER")
   // TODO: Write your code here
   timer = setInterval(updateTimer, 1000);
   return timer;
@@ -252,7 +258,7 @@ function startTimer() {
 *
 */
 function whack(event) {
-  // console.log("WHACK")
+  console.log("WHACK")
   // TODO: Write your code here.
   // call updateScore()
   // 
@@ -285,6 +291,7 @@ function setEventListeners(){
 *
 */
 function setDuration(duration) {
+  console.log("SETDURATION", duration);
   time = duration;
   return time;
 }
@@ -321,12 +328,13 @@ To make the game work, ensure all necessary functions listed above are called to
 */
 function startGame(){
   setDuration(10);
-  clearScore();
+  
   // stopGame();   //optional
-  startTimer();
+  
   showUp();
   setEventListeners();
- 
+  startTimer();
+  clearScore();
   
   return "game started";
 }
