@@ -51,7 +51,7 @@ function setDelay(difficulty) {
       return 1000; 
   } else {
     // setDelay("hard");
-    return randomInteger(600, 1200);
+    return randomInteger(600, 800);
   }
 }
 
@@ -107,6 +107,7 @@ function chooseHole(holes) {
 *
 */
 function gameOver() {
+  console.log("GAMEOVER");
   // TODO: Write your code here
   if (time > 0) {
     timeoutId = showUp();
@@ -144,20 +145,20 @@ function showUp() {
 */
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
- console.log("DELAY", delay) ;
-  console.log("HOLE", hole);
-  if (time > 0) {
-    toggleVisibility(hole);
-  }                           
+       toggleVisibility(hole);
+
   const timeoutID = setTimeout(() => {
-    // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-   
-  // if something do something, then call gameover
-  if (time < 0) {
-    toggleVisibility(hole);;    
-  }  
-   gameOver();
-  }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
+    // TODO: call the toggleVisibility function so that it removes the 'show' class
+    //  when the timer times out.
+    toggleVisibility(hole);  
+  console.log("TIME2", time);
+  if (stopGame) {
+    console.log("GAMEOVER" );
+  
+     gameOver();
+   }
+  }, delay); 
+  // TODO: change the setTimeout delay to the one provided as a parameter
   return timeoutID;
 }
 
@@ -327,7 +328,7 @@ To make the game work, ensure all necessary functions listed above are called to
  initialize the score, timer, event listeners, and mole appearances. 
 */
 function startGame(){
-  setDuration(10);
+  setDuration(20);
   
   // stopGame();   //optional
   
