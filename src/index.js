@@ -51,7 +51,7 @@ function setDelay(difficulty) {
       return 1000; 
   } else {
     // setDelay("hard");
-    return randomInteger(600, 800);
+    return randomInteger(700, 856);
   }
 }
 
